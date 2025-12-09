@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dep
+  labels:
+    author: jobair
+    app: webserver
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web
+      creator: jobair
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: web
+        creator: jobair
+    spec:
+      containers:
+        - name: nginx-con
+          image: nginx
+          ports:
+            - containerPort: 80
+              hostPort: 8080
+      tolerations:
+        - key: slave1
+          operator: Equal
+          value: jobair1
+          effect: NoSchedule
+...

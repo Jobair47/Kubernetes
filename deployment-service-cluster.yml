@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-dep
+  labels:
+    author: jobair
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: postgres
+      creator: jobair
+  template:
+    metadata:
+      name: postgres-pod
+      labels:
+        name: postgres
+        creator: jobair
+    spec:
+      containers:
+        - name: postgres-con
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "jobair"
+...

@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-dep
+  labels:
+    type: webserver
+    author: jobair
+spec:
+  selector:
+    matchLabels:
+      app: jenkins
+      author: jobair
+  template:
+    metadata:
+      name: jenkins-pod
+      labels:
+        app: jenkins
+        author: jobair
+    spec:
+      containers:
+        - name: jenkins-con
+          image: jenkins/jenkins
+...
+

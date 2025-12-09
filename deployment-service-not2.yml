@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminer-dep
+  labels:
+    name: adminer
+    author: jobair
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: adminers
+      author: jobair
+  template:
+    metadata:
+      name: adminer-pod
+      labels:
+        name: adminers
+        author: jobair
+    spec:
+      containers:
+        - name: adminer-con
+          image: adminer
+...

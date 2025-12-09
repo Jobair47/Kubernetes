@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jojo-rs
+  namespace: test-ns
+  labels:
+    app: webserver
+    creator: jobair
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      gost: gost
+      author: jobair
+  template:
+    metadata:
+      name: gost-pod
+      labels:
+        gost: gost
+        author: jobair
+    spec:
+      containers:
+        - name: gost-co
+          image: ghost
+          ports:
+            - containerPort: 2308
+...

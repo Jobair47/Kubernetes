@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-dep
+  labels:
+    app: database
+    author: jobair
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: database
+      creator: jobair
+  template:
+    metadata:
+      name: mysql-po
+      labels:
+        app: database
+        creator: jobair
+    spec:
+      containers:
+        - name: mysql-con
+          image: mysql:8
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: jobair
+...

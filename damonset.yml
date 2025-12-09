@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: tomcat-dam
+  labels:
+    type: webserver
+    author: jobair
+spec:
+  selector:
+    matchLabels:
+      app: tomcat
+      creator: jobair
+  template:
+    metadata:
+      name: tomcat-pod
+      labels:
+        app: tomcat
+        creator: jobair
+    spec:
+      containers:
+        - name: tomcat-con
+          image: tomee
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+...

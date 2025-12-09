@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dep
+  labels:
+    author: jobair
+    app: webserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webserver
+      creator: jobair
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: webserver
+        creator: jobair
+    spec:
+      containers:
+        - name: nginx-con
+          image: nginx
+          ports:
+            - containerPort: 80
+...

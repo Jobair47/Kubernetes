@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-pod
+  labels:
+    name: sql
+    creator: jobair
+
+
+spec:
+  containers:
+    - name: mysql-con
+      image: mysql:8
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: jobair
+      volumeMounts:
+        - name: mysql-volume
+          mountPath: /var/lib/mysql
+  volumes:
+    - name: mysql-volume
+      emptyDir: {}
+...
