@@ -8,10 +8,9 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
     path: /home/jobairansari637/Kubernetes/data
 ...
-

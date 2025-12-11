@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql-stat
+  labels:
+    author: jobair
+spec:
+  replicas: 2
+  serviceName: mysql-service1   # MUST match service name
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+        - name: mysql-con
+          image: mysql
+          volumeMounts:
+            - name: my-volumes
+              mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: my-volumes
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 3Gi
+...
