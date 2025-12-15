@@ -1,0 +1,42 @@
+mkdir RBAC
+  502  cd RBAC/
+  503  ls
+  504  sudo vim role.yml
+  505  cd ..
+  506  sudo vim namespace.yml 
+  507  cd RBAC/
+  508  sudo vim namespace2.yml
+  509  cd ..
+  510  sudo vim namespace.yml 
+  511  cd RBAC/
+  512  sudo vim namespace2.yml
+  513  kubectl apply -f namespace2.yml 
+  514  sudo vim namespace2.yml
+  515  kubectl apply -f namespace2.yml 
+  516  sudo vim namespace2.yml
+  517  kubectl apply -f namespace2.yml 
+  518  kubectl apply -f role.yml 
+  519  sudo vim role.yml 
+  520  kubectl apply -f role.yml 
+  521  sudo vim rollbinding.yml
+  522  kubectl apply -f rollbinding.yml 
+  523  sudo vim rollbinding.yml
+  524  kubectl apply -f rollbinding.yml 
+  525  kubectl auth can-i get --as jobair -n network
+  526  kubectl auth can-i create pods --as jobair -n network
+  527  kubectl auth can-i get deployment --as jobair -n network
+  528  kubectl auth can-i get pod --as jobair -n network
+  529  kubectl delete -f namespace2.yml 
+  530  kubectl delete -f rollbinding.yml 
+  531  kubectl delete -f role.yml 
+  532  sudo vim clusterrole.yml
+  533  kubectl apply -f clusterrole.yml 
+  534  sudo vim clusterrole.yml
+  535  kubectl get clusterrole
+  536  sudo vim clusterrolebinding.yml
+  537  kubectl apply -f clusterrolebinding.yml 
+  538  ls
+  539  kubectl auth can-i get pods --as jobair
+  540  kubectl auth can-i delete  pods --as jobair
+  541  kubectl auth can-i delete service --as jobair
+  542  kubectl delete -f clusterrolebinding.yml 

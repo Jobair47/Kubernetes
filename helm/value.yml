@@ -1,0 +1,5 @@
+---
+replicaCount: 4
+Service:
+  type: LoadBalancer
+...

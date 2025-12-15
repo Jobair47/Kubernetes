@@ -1,0 +1,60 @@
+ 574  ls
+  575  sudo vim older.yml 
+  576  kubectl apply -f older.yml 
+  577  kubectl get pods
+  578  sudo vim new.yml
+  579  kubectl apply -f new.yml 
+  580  kubectl get pod
+  581  kubectl scale deployment nginx-d --replicas=2
+  582  kubectl get pods
+  583  kubectl delete older.yml 
+  584  kubectl delete -f older.yml 
+  585  kubectl get pods
+  586  kubectl apply -f new.yml
+
+
+ Meaning of Canary Update
+
+A canary update is a deployment strategy where a new version of an application is released to a small percentage of users first, while the majority of users continue using the old version.
+
+If the new version works fine, traffic is gradually increased to it.
+
+Simple explanation
+
+Deploy new version to a few pods
+
+Send limited traffic (for example, 5–10%)
+
+Monitor errors, latency, CPU, logs
+
+If stable → increase traffic
+
+If issues → rollback immediately
+
+Why it is called “canary”
+
+In old coal mines, canary birds were used to detect toxic gases early.
+
+👉 Similarly, a canary deployment detects problems early before affecting all users.
+
+How Canary Update works in Kubernetes
+
+Kubernetes does not have native canary support, but it is implemented using:
+
+Multiple Deployments
+
+Services
+
+Ingress / Load balancer
+
+Service mesh (Istio, Linkerd)
+
+Example flow
+
+Version v1 → 100% traffic
+
+Version v2 (canary) → 10% traffic
+
+Monitor
+
+Increase to 25%, 50%, 100% 

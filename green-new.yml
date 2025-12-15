@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dep
+  labels:
+    app: webserver
+    author: jobair
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: nginx
+      author: jobair
+  template:
+    metadata:
+      labels:
+        name: nginx
+        author: jobair
+    spec:
+      containers:
+        - name: nginx-con
+          image: nginx:1.29
+...
